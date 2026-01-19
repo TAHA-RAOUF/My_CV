@@ -1,0 +1,212 @@
+.pixel-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.pixel-sky {
+    position: absolute;
+    inset: 0;
+}
+
+.pixel-cloud {
+    position: absolute;
+    width: 120px;
+    height: auto;
+    fill: #000000;
+    image-rendering: pixelated;
+    opacity: 1 ;  animation: cloud-sweep 34s linear infinite;
+}
+
+.cloud-left {
+    top: 12vh;
+    left: 8vw;
+    animation-duration: 42s;
+    animation-delay: -12s;
+}
+
+.cloud-right {
+    top: 18vh;
+    right: 10vw;
+    animation-duration: 34s;
+    animation-delay: -20s;
+}
+
+.pixel-bird {
+    position: absolute;
+    width: 26px;
+    height: auto;
+    fill: #000000;
+    image-rendering: pixelated;
+    top: 22vh;
+    right: 26vw;
+    opacity: 1 ;  animation: bird-glide 12s ease-in-out infinite;
+}
+
+.pixel-pte {
+    position: absolute;
+    width: 52px;
+    height: auto;
+    opacity: 1;
+    image-rendering: pixelated;
+    object-fit: contain;
+    z-index: 1;
+    will-change: transform;
+    transform-origin: center;
+    animation: pte-fly 34s linear infinite;
+}
+
+.pixel-pte.pte-a {
+    top: 9vh;
+    left: 6vw;
+    width: 48px;
+    animation-duration: 29s;
+    animation-delay: -6s;
+}
+
+.pixel-pte.pte-b {
+    top: 15vh;
+    left: 22vw;
+    width: 38px;
+    opacity: 1;
+    animation-duration: 41s;
+    animation-delay: -18s;
+}
+
+.pixel-pte.pte-c {
+    top: 6vh;
+    left: 52vw;
+    width: 44px;
+    animation-duration: 36s;
+    animation-delay: -12s;
+}
+
+.pixel-ground {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 85vh;
+    height: calc(100% - 85vh);
+    overflow: visible;
+    background-image:
+        radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 18px 18px, 26px 26px;
+    background-position: 0 0, 10px 12px;
+}
+
+.pixel-ground::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.pixel-dino {
+    position: absolute;
+    width: 96px;
+    height: auto;
+    image-rendering: pixelated;
+    left: 2vw;
+    top: -42px;
+    z-index: 2;
+    will-change: transform;
+    animation: dino-trek 42s linear infinite;
+    object-fit: contain;
+    transform-origin: center;
+    opacity: 1;
+}
+
+@keyframes cloud-sweep {
+    0% { transform: translateX(-140vw); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(100vw); }
+}
+
+@keyframes bird-glide {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-14px, -4px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes pte-fly {
+    100% { transform: translateX(-120vw) translateY(0) scaleX(1); }
+    90% { transform: translateX(0) translateY(0) scaleX(1); }
+    80% { transform: translateX(120vw) translateY(-10px) scaleX(1); }
+    50% { transform: translateX(120vw) translateY(-10px) scaleX(-1); }
+    10% { transform: translateX(0) translateY(0) scaleX(-1); }
+    0% { transform: translateX(-120vw) translateY(0) scaleX(-1); }
+}
+
+@keyframes dino-trek {
+    0% { transform: translateX(0) translateY(0) scaleX(1); }
+    12% { transform: translateX(20vw) translateY(0) scaleX(1); }
+    14% { transform: translateX(20vw) translateY(-42px) scaleX(1); }
+    16% { transform: translateX(20vw) translateY(0) scaleX(1); }
+    49% { transform: translateX(90vw) translateY(0) scaleX(1); }
+    50% { transform: translateX(90vw) translateY(0) scaleX(-1); }
+    62% { transform: translateX(70vw) translateY(0) scaleX(-1); }
+    64% { transform: translateX(70vw) translateY(-42px) scaleX(-1); }
+    66% { transform: translateX(70vw) translateY(0) scaleX(-1); }
+    100% { transform: translateX(0) translateY(0) scaleX(-1); }
+}
+
+@media (max-width: 900px) {
+    .pixel-ground {
+        top: 62vh;
+        height: calc(100% - 62vh);
+    }
+
+    .pixel-cloud {
+        width: 96px;
+    }
+
+    .pixel-dino {
+        width: 72px;
+        top: -36px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pixel-ground {
+        top: 66vh;
+        height: calc(100% - 66vh);
+    }
+
+    .pixel-cloud {
+        width: 78px;
+    }
+
+    .pixel-bird {
+        width: 20px;
+        right: 18vw;
+    }
+
+    .pixel-pte {
+        width: 36px;
+    }
+
+    .pixel-pte.pte-a {
+        top: 8vh;
+        left: 4vw;
+    }
+
+    .pixel-pte.pte-b {
+        top: 12vh;
+        left: 18vw;
+    }
+
+    .pixel-pte.pte-c {
+        top: 5vh;
+        left: 46vw;
+    }
+
+    .pixel-dino {
+        width: 58px;
+        top: -32px;
+    }
+}
