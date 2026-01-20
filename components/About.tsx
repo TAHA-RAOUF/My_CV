@@ -11,17 +11,17 @@ const skills = [
   {
     category: 'BACKEND',
     icon: Database,
-    items: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB']
+    items: ['Laravel', 'PHP', 'Node.js', 'MySQL']
   },
   {
     category: 'DEVOPS',
     icon: Terminal,
-    items: ['Docker', 'Git', 'CI/CD', 'Linux']
+    items: ['Docker', 'Git', 'Linux', 'Bash']
   },
   {
-    category: 'OTHER',
+    category: 'TOOLS & OTHER',
     icon: Cpu,
-    items: ['AI/ML', 'Web3', 'REST APIs', 'GraphQL']
+    items: ['C', 'C++', 'REST APIs', 'Blade']
   }
 ];
 
@@ -45,39 +45,57 @@ export function About() {
           <div className="space-y-6 font-mono text-lg">
             <p className="text-black/80 leading-relaxed">
               <span className="text-black font-bold">{'> '}</span>
-              Hello! I'm a developer who loves building things that live on the internet. 
-              I specialize in creating pixel-perfect, performant web applications.
+              Hi, I'm Taha Raouf! A passionate full-stack web developer specializing in 
+              Laravel and React. I build dynamic and scalable web applications that bring 
+              ideas to life.
             </p>
             <p className="text-black/80 leading-relaxed">
               <span className="text-black font-bold">{'> '}</span>
-              When I'm not coding, you'll find me at hackathons, contributing to open source, 
-              or exploring new technologies.
+              Currently studying at 1337 Rabat (42 Network), I'm constantly learning and 
+              pushing my limits. I love collaborating on web and full-stack projects that 
+              make a real impact.
             </p>
             <div className="pt-4 space-y-2 text-black/70">
               <p>{'// Current focus:'}</p>
-              <p className="pl-4">- Building scalable web apps</p>
-              <p className="pl-4">- Learning system design</p>
-              <p className="pl-4">- Contributing to OSS</p>
+              <p className="pl-4">- Software development & coding</p>
+              <p className="pl-4">- Building full-stack applications</p>
+              <p className="pl-4">- Web development & collaboration</p>
             </div>
           </div>
 
           {/* ASCII art or stats */}
-          <div className="border-4 border-black bg-white p-8 font-mono">
-            <pre className="text-xs md:text-sm text-black">
+          <div className="space-y-6">
+            <div className="border-4 border-black bg-white p-8 font-mono">
+              <pre className="text-xs md:text-sm text-black">
 {`┌─────────────────────┐
 │  DEVELOPER STATS    │
 ├─────────────────────┤
 │                     │
-│  Experience: 3+ yrs │
-│  Projects: 50+      │
+│  School: 1337 Rabat │
+│  Location: Morocco  │
+│  Projects: 18+      │
+│  Focus: Full-Stack  │
 │  Coffee: ∞          │
-│  Bugs Fixed: 1337   │
-│  Commits: 10k+      │
 │                     │
 │  Status: [ONLINE]   │
 │  ▮                  │
 └─────────────────────┘`}
-            </pre>
+              </pre>
+            </div>
+
+            {/* CV Download Button */}
+            <a
+              href="/cv_job.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block w-full px-6 py-4 bg-black text-white font-mono text-center border-4 border-black hover:bg-white hover:text-black transition-all duration-200"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                <span>📄</span>
+                <span>DOWNLOAD CV</span>
+              </span>
+              <div className="absolute inset-0 border-2 border-black translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-200" />
+            </a>
           </div>
         </div>
 

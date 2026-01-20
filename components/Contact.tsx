@@ -1,20 +1,22 @@
 'use client';
 
+import { useState, useRef } from 'react';
 import { Mail, Github, Linkedin, Twitter, MapPin } from 'lucide-react';
 import { PixelDino } from './PixelDino';
+import emailjs from '@emailjs/browser';
 
 const socialLinks = [
   {
     name: 'GitHub',
     icon: Github,
-    href: 'https://github.com',
-    username: '@yourusername'
+    href: 'https://github.com/TAHA-RAOUF',
+    username: '@TAHA-RAOUF'
   },
   {
     name: 'LinkedIn',
     icon: Linkedin,
-    href: 'https://linkedin.com',
-    username: '/in/yourname'
+    href: 'https://www.linkedin.com/in/taha-raouf-9076b9253/',
+    username: '/taha-raouf'
   },
   {
     name: 'Twitter',
@@ -25,12 +27,51 @@ const socialLinks = [
   {
     name: 'Email',
     icon: Mail,
-    href: 'mailto:your.email@example.com',
-    username: 'your.email@example.com'
+    href: 'mailto:taharaouf1123@gmail.com',
+    username: 'taharaouf1123@gmail.com'
   }
 ];
 
 export function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      // Replace these with your actual EmailJS credentials
+      const result = await emailjs.sendForm(
+        'service_gzk7krm', // Your Service ID
+        'template_xxyuruu', // You need to create a template in EmailJS and add the ID here
+        formRef.current!,
+        'j05SWKnd-pWCXUuwB' // You need to add your EmailJS public key here
+      );
+
+      if (result.text === 'OK') {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Message sent successfully! I\'ll get back to you soon.'
+        });
+        formRef.current?.reset();
+      }
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Failed to send message. Please try again or email me directly.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="relative z-10 bg-transparent py-24 px-8">
       <div className="max-w-6xl mx-auto">
@@ -75,19 +116,21 @@ export function Contact() {
             ))}
           </div>
 
-          {/* Contact Form or Info */}
+          {/* Contact Form */}
           <div className="border-4 border-black bg-white p-8">
             <h3 className="text-2xl font-bold font-mono text-black mb-6">
               $ send_message
             </h3>
             
-            <div className="space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-mono text-black/70 mb-2">
                   YOUR_NAME
                 </label>
                 <input
                   type="text"
+                  name="user_name"
+                  required
                   className="w-full px-4 py-3 border-2 border-black font-mono focus:outline-none focus:border-black focus:ring-4 focus:ring-black/10"
                   placeholder="John Doe"
                 />
@@ -99,6 +142,8 @@ export function Contact() {
                 </label>
                 <input
                   type="email"
+                  name="user_email"
+                  required
                   className="w-full px-4 py-3 border-2 border-black font-mono focus:outline-none focus:border-black focus:ring-4 focus:ring-black/10"
                   placeholder="john@example.com"
                 />
@@ -110,15 +155,31 @@ export function Contact() {
                 </label>
                 <textarea
                   rows={4}
+                  name="message"
+                  required
                   className="w-full px-4 py-3 border-2 border-black font-mono resize-none focus:outline-none focus:border-black focus:ring-4 focus:ring-black/10"
                   placeholder="Hey! Let's build something cool..."
                 />
               </div>
               
-              <button className="w-full px-6 py-3 bg-black text-white font-mono font-bold border-4 border-black hover:bg-white hover:text-black transition-colors duration-200">
-                SEND_MESSAGE_→
+              {submitStatus.type && (
+                <div className={`p-3 border-2 font-mono text-sm ${
+                  submitStatus.type === 'success' 
+                    ? 'bg-green-50 border-green-500 text-green-700' 
+                    : 'bg-red-50 border-red-500 text-red-700'
+                }`}>
+                  {submitStatus.message}
+                </div>
+              )}
+              
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full px-6 py-3 bg-black text-white font-mono font-bold border-4 border-black hover:bg-white hover:text-black transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'SENDING...' : 'SEND_MESSAGE_→'}
               </button>
-            </div>
+            </form>
           </div>
         </div>
 
@@ -131,7 +192,7 @@ export function Contact() {
                 <p className="text-sm text-black/60">Location</p>
                 <div className="flex items-center gap-2 text-black font-bold">
                   <MapPin className="w-4 h-4" strokeWidth={2.5} />
-                  <span>Your City, Country</span>
+                  <span>Casablanca , Morocco</span>
                 </div>
               </div>
             </div>

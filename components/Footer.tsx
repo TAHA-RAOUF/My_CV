@@ -1,74 +1,100 @@
 'use client';
 
-import { Heart, Terminal } from 'lucide-react';
+import { Heart, Terminal, Github } from 'lucide-react';
 import { PixelCactus } from './PixelCactus';
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-  
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="relative z-10 bg-black text-white py-12 px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Left side */}
+    <footer className="relative z-10 bg-black text-white px-8 py-14">
+      <div className="max-w-6xl mx-auto space-y-12">
+
+        {/* TOP SECTION */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+
+          {/* BRAND */}
           <div className="flex items-center gap-4 font-mono">
-            <Terminal className="w-6 h-6" strokeWidth={2.5} />
+            <Terminal className="w-6 h-6 text-white" strokeWidth={2.2} />
             <div>
-              <p className="font-bold text-lg">DEVELOPER.EXE</p>
-              <p className="text-sm text-white/60">Building the future, one commit at a time</p>
+              <p className="text-lg font-bold tracking-widest">
+                TAHA_RAOUF.EXE
+              </p>
+              <p className="text-sm text-white/60">
+                Software Engineer · Full-Stack Systems
+              </p>
             </div>
           </div>
-          
-          {/* Center - Decorative elements */}
+
+          {/* PIXEL DECORATION */}
           <div className="hidden md:flex items-end gap-4">
-            <div className="w-1 h-8 bg-white/20" />
-            <div className="w-1 h-12 bg-white/30" />
-            <div className="w-1 h-16 bg-white/40" />
+            {[8, 12, 16].map((h, i) => (
+              <div
+                key={i}
+                className="w-1 bg-white/30"
+                style={{ height: `${h}px` }}
+              />
+            ))}
             <PixelCactus size="sm" />
-            <div className="w-1 h-16 bg-white/40" />
-            <div className="w-1 h-12 bg-white/30" />
-            <div className="w-1 h-8 bg-white/20" />
+            {[16, 12, 8].map((h, i) => (
+              <div
+                key={i}
+                className="w-1 bg-white/30"
+                style={{ height: `${h}px` }}
+              />
+            ))}
           </div>
-          
-          {/* Right side */}
-          <div className="font-mono text-center md:text-right">
-            <p className="text-sm text-white/60 mb-1">
-              © {currentYear} All rights reserved
-            </p>
-            <p className="flex items-center gap-2 justify-center md:justify-end text-sm">
-              <span className="text-white/60">Made with</span>
+
+          {/* META */}
+          <div className="font-mono text-center md:text-right text-sm">
+            <p className="text-white/60">© {year} — All rights reserved</p>
+            <p className="mt-1 flex items-center justify-center md:justify-end gap-2">
+              <span className="text-white/60">Built with</span>
               <Heart className="w-4 h-4 fill-white text-white animate-pulse" />
               <span className="text-white/60">and</span>
-              <span className="font-bold">COFFEE</span>
+              <span className="font-bold tracking-wide">COFFEE</span>
             </p>
           </div>
         </div>
-        
-        {/* Bottom bar */}
-        <div className="mt-8 pt-8 border-t-2 border-white/20">
-          <div className="flex flex-wrap items-center justify-center gap-6 font-mono text-xs text-white/60">
-            <a href="#" className="hover:text-white transition-colors">PRIVACY_POLICY</a>
+
+        {/* DIVIDER */}
+        <div className="border-t border-white/20 pt-8">
+
+          {/* LINKS */}
+          <div className="flex flex-wrap justify-center gap-6 font-mono text-xs tracking-widest text-white/60">
+            <a href="#" className="hover:text-white transition">PRIVACY</a>
             <span>•</span>
-            <a href="#" className="hover:text-white transition-colors">TERMS_OF_USE</a>
+            <a href="#" className="hover:text-white transition">TERMS</a>
             <span>•</span>
-            <a href="#" className="hover:text-white transition-colors">SITEMAP</a>
+            <a href="#" className="hover:text-white transition">SITEMAP</a>
             <span>•</span>
-            <a href="https://github.com" className="hover:text-white transition-colors">VIEW_SOURCE</a>
+            <a
+              href="https://github.com/TAHA-RAOUF"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-white transition"
+            >
+              <Github className="w-4 h-4" />
+              SOURCE
+            </a>
           </div>
-          
-          {/* Terminal prompt */}
-          <div className="mt-6 text-center font-mono text-sm text-white/40">
+
+          {/* TERMINAL OUTRO */}
+          <div className="mt-8 text-center font-mono text-sm text-white/40">
             <p>$ exit</p>
-            <p className="mt-1">Process completed. Thank you for visiting! <span className="animate-pulse">▮</span></p>
+            <p className="mt-1">
+              Process completed. Thanks for visiting{' '}
+              <span className="animate-pulse">▮</span>
+            </p>
           </div>
         </div>
       </div>
-      
-      {/* Pixel decorations */}
-      <div className="absolute bottom-4 left-4 w-4 h-4 bg-white/10" />
-      <div className="absolute bottom-4 right-4 w-4 h-4 bg-white/10" />
-      <div className="absolute top-4 left-8 w-3 h-3 bg-white/10" />
-      <div className="absolute top-4 right-8 w-3 h-3 bg-white/10" />
+
+      {/* PIXEL NOISE */}
+      <div className="absolute bottom-4 left-4 w-3 h-3 bg-white/10" />
+      <div className="absolute bottom-4 right-4 w-3 h-3 bg-white/10" />
+      <div className="absolute top-4 left-8 w-2 h-2 bg-white/10" />
+      <div className="absolute top-4 right-8 w-2 h-2 bg-white/10" />
     </footer>
   );
 }

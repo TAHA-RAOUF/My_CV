@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Terminal } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
 const navItems = [
   { label: 'HOME', href: '#home' },
   { label: 'ABOUT', href: '#about' },
   { label: 'PROJECTS', href: '#projects' },
-  { label: 'CONTACT', href: '#contact' }
+  // { label: 'CONTACT', href: '#contact' }
 ];
 
 export function Navigation() {
@@ -54,6 +55,8 @@ export function Navigation() {
               </a>
             ))}
             
+            <ThemeToggle />
+            
             <a
               href="#contact"
               className="px-6 py-2 border-2 border-black bg-black text-white font-mono hover:bg-white hover:text-black transition-colors duration-200"
@@ -89,6 +92,11 @@ export function Navigation() {
                 {item.label}
               </a>
             ))}
+            
+            <div className="flex justify-center py-2">
+              <ThemeToggle />
+            </div>
+            
             <a
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
