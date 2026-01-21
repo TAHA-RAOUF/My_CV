@@ -21,8 +21,8 @@ const socialLinks = [
   {
     name: 'Twitter',
     icon: Twitter,
-    href: 'https://twitter.com',
-    username: '@yourusername'
+    href: 'https://x.com/TahaRaouf99',
+    username: '@TahaRaouf99'
   },
   {
     name: 'Email',
@@ -48,10 +48,10 @@ export function Contact() {
     try {
       // Replace these with your actual EmailJS credentials
       const result = await emailjs.sendForm(
-        'service_gzk7krm', // Your Service ID
-        'template_xxyuruu', // You need to create a template in EmailJS and add the ID here
+        'service_gzk7krm', 
+        'template_xxyuruu', 
         formRef.current!,
-        'j05SWKnd-pWCXUuwB' // You need to add your EmailJS public key here
+        'j05SWKnd-pWCXUuwB' 
       );
 
       if (result.text === 'OK') {
