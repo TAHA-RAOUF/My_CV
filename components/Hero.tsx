@@ -2,6 +2,7 @@
 
 import { PixelDino } from './PixelDino';
 import { PixelCloud } from './PixelCloud';
+import Image from 'next/image';
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -25,27 +26,65 @@ export function Hero() {
       </div>
       
       {/* Main content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-8 py-20 text-center">
-        <div className="space-y-4 sm:space-y-6">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-black" style={{ fontFamily: 'ArcadeClassic, monospace', letterSpacing: '0.15em', wordSpacing: '0.3em' }}>
-            {'> DEVELOPER_'}
-          </h1>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          <div className="flex items-center justify-center gap-2 text-lg sm:text-2xl md:text-3xl lg:text-4xl text-black/80">
-            <span className="animate-pulse">▮</span>
-            <p className="font-mono" style={{ fontFamily: 'ArcadeClassic, monospace', letterSpacing: '0.1em', wordSpacing: '0.25em' }}>
-              Building the future  application by application
-            </p>
+          {/* Profile Image */}
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+            <div className="relative group">
+              {/* Decorative border effect */}
+              <div className="absolute inset-0 border-4 border-black translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300" />
+              <div className="relative border-4 border-black bg-white overflow-hidden">
+                <Image
+                  src="/taha.png"
+                  alt="Taha Raouf - Full Stack Developer"
+                  width={400}
+                  height={400}
+                  className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  priority
+                />
+                {/* Pixel corner decorations */}
+                <div className="absolute top-0 right-0 w-4 h-4 bg-black" />
+                <div className="absolute bottom-0 left-0 w-4 h-4 bg-black" />
+              </div>
+              {/* Status badge */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-2 border-4 border-black font-mono text-sm whitespace-nowrap">
+                <span className="inline-block w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse" />
+                AVAILABLE FOR WORK
+              </div>
+            </div>
           </div>
-          
-          <div className="pt-4 sm:pt-8 space-y-3 sm:space-y-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-mono text-black/70">
-            <p style={{ fontFamily: 'ArcadeClassic, monospace', letterSpacing: '0.1em', wordSpacing: '0.25em' }}>
-              $ whoami
-            </p>
-            <p className="text-black max-w-2xl mx-auto px-4" style={{ fontFamily: 'ArcadeClassic, monospace', letterSpacing: '0.08em', wordSpacing: '0.2em', lineHeight: '1.8' }}>
-  Software Engineer crafting full stack products  competing in hackathons  and building in the open
-</p>
 
+          {/* Text Content */}
+          <div className="space-y-4 sm:space-y-6 text-center lg:text-left order-2 lg:order-1">
+            <div className="inline-block border-4 border-black bg-white px-4 py-2">
+              <p className="font-mono text-sm text-black/60">$ echo "Hello, World!"</p>
+            </div>
+            
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-black" style={{ fontFamily: 'ArcadeClassic, monospace', letterSpacing: '0.15em', wordSpacing: '0.3em' }}>
+              TAHA RAOUF
+            </h1>
+            
+            <div className="flex items-center justify-center lg:justify-start gap-2 text-xl sm:text-2xl md:text-3xl text-black">
+              <span className="animate-pulse">▮</span>
+              <p className="font-mono font-bold" style={{ fontFamily: 'ArcadeClassic, monospace', letterSpacing: '0.1em', wordSpacing: '0.25em' }}>
+                FULL-STACK DEVELOPER
+              </p>
+            </div>
+            
+            <div className="pt-4 space-y-3 text-lg sm:text-xl font-mono text-black/80">
+              <p className="leading-relaxed max-w-xl mx-auto lg:mx-0">
+                Software Engineer crafting full-stack products, competing in hackathons, 
+                and building in the open. Passionate about creating scalable web applications.
+              </p>
+              
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
+                <div className="border-2 border-black bg-white px-4 py-2 text-sm font-bold">REACT</div>
+                <div className="border-2 border-black bg-white px-4 py-2 text-sm font-bold">LARAVEL</div>
+                <div className="border-2 border-black bg-white px-4 py-2 text-sm font-bold">NEXT.JS</div>
+                <div className="border-2 border-black bg-white px-4 py-2 text-sm font-bold">1337 RABAT</div>
+              </div>
+            </div>
           </div>
         </div>
         

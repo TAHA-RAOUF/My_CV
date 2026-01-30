@@ -474,6 +474,15 @@ body.intro-finished .main-content {
   }
 }
 
+/* Image Hover Effects */
+.image-hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-hover-lift:hover {
+  transform: translateY(-4px);
+}
+
 /* Pixel Art Animations */
 @keyframes pixel-float {
   0%, 100% { transform: translateY(0px); }
