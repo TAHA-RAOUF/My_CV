@@ -46,12 +46,19 @@ export function Contact() {
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      // Replace these with your actual EmailJS credentials
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS credentials are not configured');
+      }
+
       const result = await emailjs.sendForm(
-        'service_gzk7krm', 
-        'template_xxyuruu', 
+        serviceId,
+        templateId,
         formRef.current!,
-        'j05SWKnd-pWCXUuwB' 
+        publicKey
       );
 
       if (result.text === 'OK') {
