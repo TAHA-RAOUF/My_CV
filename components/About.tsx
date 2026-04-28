@@ -85,7 +85,7 @@ export function About() {
 
             {/* CV Download Button */}
             <a
-              href="/cv_job.pdf"
+              href="cv Taha_pro.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative block w-full px-6 py-4 bg-black text-white font-mono text-center border-4 border-black hover:bg-white hover:text-black transition-all duration-200"
